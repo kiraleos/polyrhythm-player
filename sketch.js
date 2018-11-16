@@ -10,8 +10,8 @@ let met2;
 function setup() {
     noCanvas();
 
-    txtBox1 = createInput('60', "number");
-    txtBox2 = createInput('60', "number");
+    txtBox1 = createInput('80', "number");
+    txtBox2 = createInput('80', "number");
 
     bpm1 = createP("BPM 1: " + txtBox1.value());
     bpm2 = createP("BPM 2: " + txtBox2.value());
