@@ -25,7 +25,6 @@ function setup() {
 
 function dec2frac(d) {
     if (isNaN(d) || d == Infinity) {
-        console.log("dec2frac returned 0 because argument is NaN");
         return 0;
     }
     var df = 1;
@@ -50,10 +49,12 @@ function beat() {
 }
 
 function metronome(bpm) {
-    if (bpm != 0 || bpm != '0')
+    if (bpm != 0 && bpm != '') {
+        console.log("Playing metronome with bpm: " + bpm);
         return setInterval(beat, 60000 / bpm);
+    }
     else {
-        console.log("BPM can't be 0.");
+        console.log("BPM can't be 0 or empty.");
     }
 }
 
