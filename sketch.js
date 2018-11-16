@@ -1,6 +1,7 @@
 
 function preload() {
-    click = loadSound("assets/metronome-click.mp3");
+    click1 = loadSound("assets/metronome-click1.mp3");
+    click2 = loadSound("assets/metronome-click2.mp3");
 }
 
 let met1;
@@ -44,11 +45,14 @@ function dec2frac(d) {
     return top + '/' + bot;
 }
 
-function beat() {
-    click.play();
+function beat1() {
+    click1.play();
+}
+function beat2() {
+    click2.play();
 }
 
-function metronome(bpm) {
+function metronome(bpm, beat) {
     if (bpm != 0 && bpm != '') {
         console.log("Playing metronome with bpm: " + bpm);
         return setInterval(beat, 60000 / bpm);
@@ -66,8 +70,8 @@ function stopMetronomes() {
 function startMetronomes() {
     clearInterval(met1);
     clearInterval(met2);
-    met1 = metronome(txtBox1.value());
-    met2 = metronome(txtBox2.value());
+    met1 = metronome(txtBox1.value(), beat1);
+    met2 = metronome(txtBox2.value(), beat2);
 }
 
 
@@ -80,8 +84,8 @@ function draw() {
     txtBox1.changed(() => {
         clearInterval(met1);
         clearInterval(met2);
-        met1 = metronome(txtBox1.value());
-        met2 = metronome(txtBox2.value());
+        met1 = metronome(txtBox1.value(), beat1);
+        met2 = metronome(txtBox2.value(), beat2);
         polyrhythm.html("Polyrhythm: " + dec2frac(txtBox1.value() / txtBox2.value()));
 
     });
@@ -89,8 +93,8 @@ function draw() {
     txtBox2.changed(() => {
         clearInterval(met1);
         clearInterval(met2);
-        met1 = metronome(txtBox1.value());
-        met2 = metronome(txtBox2.value());
+        met1 = metronome(txtBox1.value(), beat1);
+        met2 = metronome(txtBox2.value(), beat2);
         polyrhythm.html("Polyrhythm: " + dec2frac(txtBox1.value() / txtBox2.value()));
 
     });
