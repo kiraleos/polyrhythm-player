@@ -9,8 +9,8 @@ let met2;
 function setup() {
     noCanvas();
 
-    txtBox1 = createInput('60');
-    txtBox2 = createInput('60');
+    txtBox1 = createInput('60', "number");
+    txtBox2 = createInput('60', "number");
 
     bpm1 = createP("BPM 1: " + txtBox1.value());
     bpm2 = createP("BPM 2: " + txtBox2.value());
@@ -24,6 +24,10 @@ function setup() {
 }
 
 function dec2frac(d) {
+    if (isNaN(d) || d == Infinity) {
+        console.log("dec2frac returned 0 because argument is NaN");
+        return 0;
+    }
     var df = 1;
     var top = 1;
     var bot = 1;
@@ -46,7 +50,11 @@ function beat() {
 }
 
 function metronome(bpm) {
-    return setInterval(beat, 60000 / bpm);
+    if (bpm != 0 || bpm != '0')
+        return setInterval(beat, 60000 / bpm);
+    else {
+        console.log("BPM can't be 0.");
+    }
 }
 
 function stopMetronomes() {
@@ -64,24 +72,26 @@ function startMetronomes() {
 
 
 function draw() {
-    // TODO handle desyncing issues
     // TODO memory leak
     bpm1.html("BPM1: " + txtBox1.value());
     bpm2.html("BPM2: " + txtBox2.value());
-    polyrhythm.html("Polyrhythm: " + dec2frac(txtBox1.value() / txtBox2.value()));
 
     txtBox1.changed(() => {
         clearInterval(met1);
         clearInterval(met2);
         met1 = metronome(txtBox1.value());
         met2 = metronome(txtBox2.value());
-    })
+        polyrhythm.html("Polyrhythm: " + dec2frac(txtBox1.value() / txtBox2.value()));
+
+    });
 
     txtBox2.changed(() => {
         clearInterval(met1);
         clearInterval(met2);
         met1 = metronome(txtBox1.value());
         met2 = metronome(txtBox2.value());
+        polyrhythm.html("Polyrhythm: " + dec2frac(txtBox1.value() / txtBox2.value()));
+
     });
 
 
