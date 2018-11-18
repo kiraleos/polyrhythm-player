@@ -16,8 +16,9 @@ function setup() {
     bpm1 = createP("BPM 1: " + txtBox1.value());
     bpm2 = createP("BPM 2: " + txtBox2.value());
     polyrhythm = createP("Polyrhythm: " + dec2frac(txtBox1.value() / txtBox2.value()));
+    errorp = createP('');
 
-    btnStart = createButton("Start / Sync");
+    btnStart = createButton("Start");
     btnStart.mouseClicked(startMetronomes);
     btnStop = createButton("Stop");
     btnStop.mouseClicked(stopMetronomes);
@@ -53,12 +54,14 @@ function beat2() {
 }
 
 function metronome(bpm, beat) {
-    if (bpm != 0 && bpm != '') {
-        console.log("Playing metronome with bpm: " + bpm);
+    if (bpm > 0 && bpm <= 500) {
         return setInterval(beat, 60000 / bpm);
     }
     else {
-        console.log("BPM can't be 0 or empty.");
+        errorp.html("BPM must be in range (0,500]");
+        setTimeout(() => {
+            errorp.html('');
+        }, 3000);
     }
 }
 
@@ -72,6 +75,14 @@ function startMetronomes() {
     clearInterval(met2);
     met1 = metronome(txtBox1.value(), beat1);
     met2 = metronome(txtBox2.value(), beat2);
+    prhythm = dec2frac(txtBox1.value() / txtBox2.value()) + '';
+    tokens = prhythm.split('/');
+    if (tokens[0] !== '0' && tokens[1] !== '0') {
+        polyrhythm.html("Polyrhythm: " + prhythm);
+    }
+    else {
+        polyrhythm.html("Polyrhythm: Can't have a polyrhythm with only one metronome playing.");
+    }
 }
 
 
@@ -82,21 +93,11 @@ function draw() {
     bpm2.html("BPM2: " + txtBox2.value());
 
     txtBox1.changed(() => {
-        clearInterval(met1);
-        clearInterval(met2);
-        met1 = metronome(txtBox1.value(), beat1);
-        met2 = metronome(txtBox2.value(), beat2);
-        polyrhythm.html("Polyrhythm: " + dec2frac(txtBox1.value() / txtBox2.value()));
-
+        startMetronomes();
     });
 
     txtBox2.changed(() => {
-        clearInterval(met1);
-        clearInterval(met2);
-        met1 = metronome(txtBox1.value(), beat1);
-        met2 = metronome(txtBox2.value(), beat2);
-        polyrhythm.html("Polyrhythm: " + dec2frac(txtBox1.value() / txtBox2.value()));
-
+        startMetronomes();
     });
 
 
