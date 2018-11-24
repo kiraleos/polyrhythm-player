@@ -1,0 +1,86 @@
+h1 {
+    text-align: center;
+    color: black;
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+body{
+    background-color: #19acf1;
+}
+button {
+    font-family: 'Trebuchet MS', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+#polyrhythm{
+    font-size: 25pt;
+    text-align: center;
+}
+
+
+.txtbox{
+    background-color : red;
+    color : red;
+}
+
+
+.txtBox{
+    text-align: center;
+    font-size: 16pt;
+    width: 15%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: #fff;
+    border-radius: 25px;
+    outline: none;
+}
+button{
+    background-color: #10e7a7;
+}
+button:hover {
+    background-color: #00ffb3
+}
+
+button:active {
+    background-color: #0ba879
+}
+
+button:focus{
+    outline:none;
+}
+#btnStart{
+    border: #fff;
+    padding: 10px;
+    font-size: 16pt;
+    width: 10%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 18px;
+    display: block;
+}
+
+#btnStop{
+    border: #fff;
+    padding: 5px;
+    font-size: 16pt;
+    width: 5%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 13px;
+    display: block;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}

@@ -5,12 +5,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Polyrhythm Player</title>
+    <link rel="stylesheet" , type="text/css" , href="styling.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.js"></script>
+
+    <script src="index.js"></script>
 </head>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.js"></script>
+<body>
+    <h1>Polyrhythm Player</h1>
+    <div class="inputWrapper">
+        <input id="txtBox1" class="txtBox" type="number" value="80" placeholder="Enter BPM">
+        <input id="txtBox2" class="txtBox" type="number" value="80" placeholder="Enter BPM">
+        <p id="polyrhythm"></p>
+    </div>
 
-<script src="sketch.js"></script>
+    <div class="buttonWrapper">
+        <button id="btnStart" class="button">Start</button>
+        <button id="btnStop" class="button">Stop</button>
+    </div>
+
+</body>
 
 </html>
